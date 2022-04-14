@@ -1,7 +1,6 @@
 echo "Installing Libs for OpenCV"
 
-pip3 install opencv-python
-pip3 install opencv-contrib-python
+sudo pip3 install opencv-contrib-python
 
 pip3 install numpy
 

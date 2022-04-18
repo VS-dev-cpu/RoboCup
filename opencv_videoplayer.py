@@ -9,49 +9,47 @@ def get_unix():
     d = datetime.utcnow()
     return calendar.timegm(d.utctimetuple())
 
+cap = cv2.VideoCapture("info.mp4")
 current = ""
-cap = cv2.VideoCapture("")
 cv2.namedWindow("window", cv2.WND_PROP_FULLSCREEN)
 cv2.setWindowProperty("window",cv2.WND_PROP_FULLSCREEN,cv2.WINDOW_FULLSCREEN)
 
 def load(name):
     current = name
-    cap.release()
-    cap = cv2.VideoCapture(str(name) + '.mkv')
+    cap = cv2.VideoCapture(str(name) + '.mp4')
     
 def playsound(path):
+    os.system("kill 2")
     os.system("mpg123 " +  str(path) + " &")
-      
-def play():
-    playsound(str(current) + '.mp3')
+    
+def play(name):
+    load(name)
+    playsound(str(name) + '.mp3')
     ret = True
     while(ret):
         ret, frame = cap.read()
         if ret == True:
           cv2.imshow('window', frame)
-        
-def playForTime(secs):
+
+def playForTime(name, secs):
     start = get_unix()
-    playsound(str(current) + '.mp3')
+    load(name)
+    playsound(str(name) + '.mp3')
     ret = True
     while (ret):
         ret, frame = cap.read()
         if ret == True:
           cv2.imshow('window', frame)
-        if (get_unix() - start >= secs)
+        if (get_unix() - start >= secs):
             ret = False
-            
-load("info")
-playForTime(226)
-    
-load("sunrise")
-playForTime(19)
 
-load("searching")
-play()
+playForTime("info", 226)
 
-load("dance")
-playForTime()
+playForTime("sunrise", 19)
+
+play(fractal)
+
+playForTime("dance", 10)
     
 
 cv2.destroyAllWindows()

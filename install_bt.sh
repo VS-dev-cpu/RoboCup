@@ -1,4 +1,4 @@
-echo "Installing Libs for Bluetooth"
+echo "Installing Libs for Bluetooth - DON'T USE"
 
 sudo apt-get update
 sudo apt-get install bluetooth bluez libbluetooth-dev
